@@ -1,0 +1,318 @@
+
+input{
+    padding:5px;
+    margin:8px;
+    width:60%;
+}
+
+/* For Boot Strap */
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+    cursor: pointer;
+}
+
+a:focus{
+    outline:none !important;
+}
+
+.widget-header .row > div{
+    margin-bottom: 0;
+}
+
+.widget-header .row .pull-right > a{
+    float:right;
+}
+
+.content-bg{
+    background-color: #f5f7f6;
+}
+
+.nav-bar-elevated{
+    -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.175);
+    box-shadow: 0 5px 5px rgba(0,0,0,0.175);
+    position: fixed;
+    z-index: 999;
+    right:0;
+    left:0;
+    width: 100%;
+}
+
+.nav-bar-normal{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    position:relative;
+}
+
+.mdi::before {
+    font-size: 24px;
+    line-height: 14px;
+}
+.btn .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.btn-xs .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+.btn-sm .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+.dropdown-menu .mdi {
+    width: 18px;
+}
+.dropdown-menu .mdi::before {
+    position: relative;
+    top: 4px;
+    left: -8px;
+}
+.nav .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.navbar .navbar-toggle .mdi::before {
+    position: relative;
+    top: 4px;
+    color: #FFF;
+}
+.breadcrumb .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.breadcrumb a:hover {
+    text-decoration: none;
+}
+.breadcrumb a:hover span {
+    text-decoration: underline;
+}
+.alert .mdi::before {
+    position: relative;
+    top: 4px;
+    margin-right: 2px;
+}
+.input-group-addon .mdi::before {
+    position: relative;
+    top: 3px;
+}
+.navbar-brand .mdi::before {
+    position: relative;
+    top: 2px;
+    margin-right: 2px;
+}
+.list-group-item .mdi::before {
+    position: relative;
+    top: 3px;
+    left: -3px
+}
+/* Boot Strap UI Ends*/
+
+/* Angular Material Design Starts Here*/
+.mdContentParent{
+    min-height:650px;
+    background-color: #FFFFFF !important;
+}
+md-content{
+    width:30%;
+}
+md-card-content{ width:auto; }
+md-input-container > input { width:85%; }
+md-input-container:not(.md-input-invalid) > md-icon.email {
+    color: green;
+}
+md-input-container:not(.md-input-invalid) > md-icon.name {
+    color: dodgerblue;
+}
+md-input-container.md-input-invalid > md-icon.email,
+md-input-container.md-input-invalid > md-icon.name {
+    color: red;
+}
+
+.lock-size {
+    min-height: inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.md-fab.demo-fab.trigger-fab:hover, .md-fab.demo-fab.trigger-fab.md-focused,
+.md-fab.demo-fab.action-fab:hover, .md-fab.demo-fab.action-fab.md-focused {
+    background-color: #333;
+}
+
+.md-fab.demo-fab.action-fab {
+    background-color: #aaa;
+}
+
+md-content div[flex="50"] {
+    padding: 15px;
+}
+/* Angular Material Design Ends Here*/
+
+.hidden{
+    display: none;
+}
+
+.updated{
+    border: 2px solid #3e8f3e;
+}
+
+.live-users{
+    padding:5px;
+    float: left;
+    height:200px;
+    width: 35%;
+    overflow:auto;
+    border: 2px solid #d5d5d5;
+}
+
+.interacting-system-class{
+    text-align: left;
+    padding: 5px;
+    height:200px;
+    width: auto;
+    border: 2px solid #d5d5d5;
+}
+
+.active-interactions{
+    padding: 5px;
+    margin:8px;
+    overflow:auto;
+}
+
+/** Material Icons Design Here*/
+.icondemoFontIconsWithClassnames {
+
+}
+
+.icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames {
+    padding: 25px;
+    width: 100%;
+}
+
+.icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames, .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames *:before, .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames *:after {
+    box-sizing: border-box;
+}
+
+.icondemoFontIconsWithClassnames [class^="icon-"]:before, .icondemoFontIconsWithClassnames [class*=" icon-"]:before {
+    font-family: "icomoon";
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icondemoFontIconsWithClassnames .icon-home:before {
+    content: "\e900";
+}
+
+.icondemoFontIconsWithClassnames .icon-clock:before {
+    content: "\e94e";
+}
+
+.icondemoFontIconsWithClassnames .icon-user-plus:before {
+    content: "\e973";
+}
+
+.icondemoFontIconsWithClassnames .icon-google-plus2:before {
+    content: "\ea89";
+}
+
+.icondemoFontIconsWithClassnames .icon-youtube4:before {
+    content: "\ea9a";
+}
+
+.icondemoFontIconsWithClassnames .icon-settings:before {
+    content: "\e600";
+}
+
+.icondemoFontIconsWithClassnames md-progress-circular {
+    margin-bottom: 20px;
+}
+
+.icondemoFontIconsWithClassnames header {
+    overflow: hidden;
+}
+
+.icondemoFontIconsWithClassnames header h1 {
+    color: #888;
+    font-size: 36px;
+    font-weight: 300;
+}
+
+.icondemoFontIconsWithClassnames .container {
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 960px;
+    padding: 40px 40px;
+    font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.icondemoFontIconsWithClassnames .glyph {
+    border-bottom: 1px dotted #ccc;
+    padding: 10px 0 20px;
+    margin-bottom: 20px;
+}
+
+.icondemoFontIconsWithClassnames .preview-scale, .icondemoFontIconsWithClassnames .preview-glyphs {
+    display: flex;
+    flex-direction: row;
+}
+
+.icondemoFontIconsWithClassnames .preview-scale {
+    color: #888;
+    font-size: 12px;
+    margin-top: 24px;
+}
+
+.icondemoFontIconsWithClassnames .step {
+    flex-grow: 1;
+    line-height: 0.5;
+}
+
+.icondemoFontIconsWithClassnames .usage {
+    margin-top: 10px;
+}
+
+.icondemoFontIconsWithClassnames .usage input {
+    font-family: monospace;
+    text-align: center;
+}
+
+.icondemoFontIconsWithClassnames .usage .point {
+    width: 150px;
+}
+
+.icondemoFontIconsWithClassnames .usage .class {
+    width: 250px;
+}
+
+.icondemoFontIconsWithClassnames md-radio-button {
+    display: inline-block;
+}
+
+.icondemoFontIconsWithClassnames .loading {
+    background-color: black;
+    filter: alpha(opacity=40);
+    height: 100%;
+    left: 0;
+    opacity: .40;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 90;
+}
+
+.icondemoFontIconsWithClassnames .loading md-progress-circular {
+    left: 50%;
+    position: fixed;
+    top: 48%;
+    z-index: 100;
+}

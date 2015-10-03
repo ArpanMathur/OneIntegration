@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="centerMesh">
+    <head>
+        <title><%= title %></title>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel='stylesheet' type="text/css" href='/stylesheets/style.css' />
+        <link rel='stylesheet' type="text/css" href='/stylesheets/generic-layouts.css' />
+        <link rel='stylesheet' type="text/css" href='/bower/components/mdi/css/materialdesignicons.css' />
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel='stylesheet' type="text/css" href='/bower/components/angular-bootstrap/ui-bootstrap-csp.css' />
+        <link rel='stylesheet' type="text/css" href='/bower/components/angular-material/angular-material.css' />
+        <link rel='stylesheet' type="text/css" href='/bower/components/font-awesome/css/font-awesome.css' />
+        <link rel='stylesheet' type="text/css" href='/bower/components/bootstrap/dist/css/bootstrap.min.css' />
+        <link rel='stylesheet' type="text/css" href='/dist/css/rdash.css' />
+
+        <script src='/bower/components/angular/angular.js'></script>
+        <script src='/bower/components/angular-cookies/angular-cookies.js'></script>
+        <script src='/bower/components/angular-animate/angular-animate.js'></script>
+        <script src='/bower/components/angular-aria/angular-aria.js'></script>
+        <script src='/bower/components/angular-route/angular-route.js'></script>
+        <script src='/bower/components/angular-ui-router/release/angular-ui-router.js'></script>
+        <script src='/bower/components/angular-bootstrap/ui-bootstrap.js'></script>
+        <script src='/bower/components/angular-bootstrap/ui-bootstrap-tpls.js'></script>
+        <script src='/bower/components/angular-material/angular-material.js'></script>
+        <script src='/bower/components/angular-ui-layout/ui-layout.js'></script>
+        <script src='/socket.io/socket.io.js'></script>
+        <script src='/angular/components/factories.js'></script>
+        <script src='/angular/components/services.js'></script>
+        <script src='/angular/components/controllers.js'></script>
+        <script src='/angular/components/directives.js'></script>
+        <script src='/angular/apps/app.js'></script>
+        <base href="/apps/quantum/"/>
+    </head>
+    <body ng-controller="PrimaryAppController">
+        <ui-view></ui-view>
+    </body>
+</html>

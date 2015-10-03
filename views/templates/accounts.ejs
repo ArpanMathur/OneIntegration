@@ -1,0 +1,76 @@
+<div id="page-wrapper" ng-class="{'content-bg':true, 'open': toggle}" ng-controller="AccountsCTRL" ng-cloak>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar">
+            <li class="sidebar-main">
+                <a ng-click="toggleSidebar()">
+                    Dashboard
+                    <span class="menu-icon glyphicon glyphicon-transfer" />
+                </a>
+            </li>
+            <li class="sidebar-title"><span>NAVIGATION</span></li>
+            <li class="sidebar-list">
+                <a ui-sref="mesh.accounts.dashboard">Dashboard <span class="menu-icon fa fa-tachometer"/></a>
+            </li>
+            <li class="sidebar-list">
+                <a ui-sref="mesh.accounts.profile">Tables <span class="menu-icon fa fa-table"/></a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="col-xs-4">
+                <a href="#">Github</a>
+            </div>
+            <div class="col-xs-4">
+                <a href="#">About</a>
+            </div>
+            <div class="col-xs-4">
+                <a href="#">Support</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-wrapper">
+        <div class="page-content">
+            <div ng-class="{'row':true, 'header':true, 'nav-bar-normal':!navBoxToggle,'nav-bar-elevated':navBoxToggle}">
+                <div class="col-xs-12">
+                    <div class="user pull-right">
+                        <div class="item dropdown">
+                            <a href="#" class="dropdown-toggle">
+                                <img src="">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header">Joe Bloggs</li>
+                                <li class="divider" />
+                                <li class="link"><a href="#"> Profile </a></li>
+                                <li class="link"><a href="#"> Menu Item </a></li>
+                                <li class="link"><a href="#"> Menu Item </a></li>
+                                <li class="divider" />
+                                <li class="link"><a href="#"> Logout </a></li>
+                            </ul>
+                        </div>
+                        <div class="item dropdown">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-bell-o"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header"> Notifications </li>
+                                <li class="divider" />
+                                <li><a href="#">Server Down!</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="meta">
+                        <div class="page">
+                            Dashboard
+                        </div>
+                        <div class="breadcrumb-links">
+                            Home / Dashboard
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-class="{'content-bg':true}" ui-view></div>
+
+        </div>
+    </div>
+</div>

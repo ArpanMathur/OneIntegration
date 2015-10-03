@@ -1,0 +1,184 @@
+#!/usr/bin/env node
+
+var os = require('os');
+var app = require('../app');
+var async = require('async');
+var passport = require('passport');
+
+var securityCtx = require(
+        '../services/core/components/coreSecurity'
+);
+var webSocketFactory = require(
+    '../services/core/components/webSocketFactory'
+);
+
+var wsConfig =
+    webSocketFactory.wsConfigurer();
+
+var debug = require('debug')(
+    'Thinker:server'
+);
+
+var http = require('http');
+var IO = require('socket.io');
+
+var port = normalizePort(
+    process.env.PORT || '3000'
+);
+
+var ws_port = normalizePort(
+        process.env.SOCKET_PORT || '8008'
+);
+
+app.set('port', port);
+
+app.set('trust proxy',
+    '127.0.0.1',
+    '10.0.2.88',
+    'loopback',
+    'link-local'
+);
+
+var server = http
+    .createServer(app);
+
+server.on('error',
+    onError
+);
+server.on('listening',
+    onListening
+);
+
+server.listen(port);
+
+var getHostRunningMesh = function(){
+    var nio = os.networkInterfaces();
+    var serverIp = '';
+
+    if(nio.hasOwnProperty("eth0")){
+        serverIp = nio["eth0"][0]["address"];
+    }else{
+        serverIp = nio["lo"][0]["address"];
+    }
+
+    return serverIp;
+
+}
+
+var baseUri = "http://"+getHostRunningMesh()+":"+port;
+var pathUri = "/apps/quantum/auth/google";
+
+securityCtx.authenticator(
+    baseUri, pathUri, passport)
+    .configure("google");
+
+var io = IO(server);
+io.listen(ws_port);
+
+io.on('connection',function(socket){
+
+});
+
+io.on('disconnection',function(){});
+
+/*var io = require('socket.io')(server);
+var sockets = [];
+var users=[];
+io.on('connection', function(socket){
+    var index = sockets.length;
+    console.log('One user is connected to Thinker via socket io !!!');
+
+    var usersObject = (function(index){
+
+        var currentUser = {
+            count: (index+1),
+            codename:'User-'+(index+1)
+        }
+
+        users.push(currentUser);
+
+        return {
+            getConnectedUsers : function(){
+                return users;
+            },
+            getCurrentUser:function(){
+                return currentUser;
+            }
+        }
+
+    })(index);
+
+    io.emit('connections', usersObject.getConnectedUsers());
+
+    socket.on('characters', function(thoughts){
+        var thinkerInLimbo = usersObject.getCurrentUser().codename;
+        var connectionObj = (function(index, thinkerInLimbo){
+
+            var connectionI = {
+                count: (index+1),
+                thinker :thinkerInLimbo ,
+                characters: thoughts
+            }
+
+            return {
+                getConnectionMessage : function(){
+                    return connectionI;
+                }
+            }
+
+        })(index, thinkerInLimbo);
+
+        io.emit('characters', connectionObj.getConnectionMessage());
+
+    });
+
+    sockets.push(socket);
+});*/
+
+function normalizePort(val) {
+    var port = parseInt(val, 10);
+
+    if (isNaN(port)) {
+        return val;
+    }
+
+    if (port >= 0) {
+        return port;
+    }
+
+    return false;
+}
+
+function onError(error) {
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+
+    var bind = typeof port === 'string'
+        ? 'Pipe ' + port
+        : 'Port ' + port;
+
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+function onListening() {
+    var addr = server.address();
+    var bind = typeof addr === 'string'
+        ? 'pipe ' + addr
+        : 'port ' + addr.port;
+    debug('Listening on ' + bind);
+}
