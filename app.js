@@ -46,6 +46,7 @@ app.use(session({
 app.use(passport.initialize()); //Initialize passport connection the
 app.use(passport.session()); //The app will register a passport session
 
+
 /**Define express based routers for the app
  * this provides for segregation of the
  * central app to multiple mini-apps
