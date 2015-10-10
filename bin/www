@@ -61,7 +61,7 @@ var getHostRunningMesh = function(){
         serverIp = nio["lo"][0]["address"];
     }
 
-    return serverIp;
+    return process.env.HOST_MESH || serverIp;
 
 }
 
