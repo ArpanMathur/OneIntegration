@@ -1,46 +1,12 @@
-<div ng-class="{'mdContentParent':true}" ng-controller="QuantumSignUpCtr" layout="row" layout-align="center center">
-    <md-content layout-padding class="autoScroll">
-        <alert ng-repeat="message in messages" type="{{message.type}}" close="closeAlert($index)">
-            {{message.msg}}
-        </alert>
-        <md-card>
-            <md-card-content>
-                <md-input-container class="md-icon-float" >
-                    <label>Name</label>
-                    <md-icon md-svg-src="/gfx/icons/ic_person_24px.svg" class="name"></md-icon>
-                    <input ng-model="user.name" type="text">
-                </md-input-container>
-                <md-input-container md-no-float>
-                    <md-icon md-svg-src="../gfx/icons/ic_phone_24px.svg"></md-icon>
-                    <input ng-model="user.phone" type="text" placeholder="Phone Number">
-                </md-input-container>
-                <md-input-container >
-                    <md-icon md-svg-src="../gfx/icons/ic_email_24px.svg" class="email"></md-icon>
-                    <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
-                </md-input-container>
-                <md-input-container md-no-float>
-                    <md-icon md-svg-src="../gfx/icons/ic_place_24px.svg"></md-icon>
-                    <input ng-model="user.address" type="text" placeholder="Address" >
-                </md-input-container>
-                <md-fab-speed-dial md-open="true" md-direction="right" ng-class="{'md-scale':true}">
-                    <md-fab-trigger>
-                        <md-button aria-label="menu" class="md-fab md-warn">
-                            <md-icon md-font-set="material-icons">security</md-icon>
-                        </md-button>
-                    </md-fab-trigger>
-                    <md-fab-actions>
-                        <md-button aria-label="twitter" class="md-fab md-raised md-mini">
-                            <md-icon md-svg-src="../gfx/icons/twitter47.svg"></md-icon>
-                        </md-button>
-                        <md-button aria-label="facebook" class="md-fab md-raised md-mini">
-                            <md-icon md-svg-src="../gfx/icons/facebook56.svg"></md-icon>
-                        </md-button>
-                        <md-button ng-init="strategy='google'" aria-label="Google Hangout" ng-click="signUpPopup($event,strategy)" class="md-fab md-raised md-mini">
-                            <md-icon md-svg-src="../gfx/icons/google120.svg"></md-icon>
-                        </md-button>
-                    </md-fab-actions>
-                </md-fab-speed-dial>
-            </md-card-content>
-        </md-card>
+<div ng-class="{'mdContentParent':true}" ng-controller="QuantumSignUpCtr" layout="columns" layout-align="center center" ng-cloak>
+    <md-content layout-padding>
+        <md-button ng-init="strategy='facebook'" class="md-primary md-raised md-mini" aria-label="Sign-up with Facebook">
+            <md-icon class="md-primary" md-svg-src="../gfx/icons/facebook56.svg"></md-icon>
+            <span>Sign-up with Facebook</span>
+        </md-button>
+        <md-button ng-init="strategy='google'" ng-click="signUpPopup($event,strategy)" class="md-warn md-raised md-mini" aria-label="Sign-up with Google">
+            <md-icon class="md-warn" md-svg-src="../gfx/icons/google120.svg"></md-icon>
+            <span>Sign-up with Google</span>
+        </md-button>
     </md-content>
 </div>

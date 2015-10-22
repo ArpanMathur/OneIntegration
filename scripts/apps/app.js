@@ -5,8 +5,11 @@ var thinkerApp = angular.module('centerMesh', [
     'ui.bootstrap',
     'ui.layout',
     'ui.router',
+    'md.data.table',
     'ngCookies',
     'ngRoute',
+    'angular-loading-bar',
+    'ngAnimate',
     'ngMaterial',
     'centerMesh.serviceFactories',
     'centerMesh.thinkerServices',
@@ -14,11 +17,14 @@ var thinkerApp = angular.module('centerMesh', [
     'centerMesh.thinkerDirectives'
 ]);
 
-thinkerApp.config([ '$routeProvider','$stateProvider','$urlRouterProvider','$locationProvider','$mdThemingProvider',
-    function($routeProvider,$stateProvider,$urlRouterProvider,$locationProvider,$mdThemingProvider){
+thinkerApp.config([ '$routeProvider', 'cfpLoadingBarProvider','$stateProvider','$urlRouterProvider','$locationProvider','$mdThemingProvider',
+    function($routeProvider, cfpLoadingBarProvider,$stateProvider,$urlRouterProvider,$locationProvider,$mdThemingProvider){
         $locationProvider
             .html5Mode(true)
             .hashPrefix("");
+
+        cfpLoadingBarProvider
+            .includeSpinner = false;
 
         $urlRouterProvider
             .otherwise('/');
@@ -66,8 +72,8 @@ thinkerApp.config([ '$routeProvider','$stateProvider','$urlRouterProvider','$loc
             });
 
         $mdThemingProvider.theme('default')
-            .primaryPalette("red")
+            .primaryPalette("indigo")
             .accentPalette('green')
-            .warnPalette('blue');
+            .warnPalette('red');
 
 }]);

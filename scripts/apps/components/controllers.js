@@ -5,14 +5,14 @@ var primaryControllers = angular.module('centerMesh.primaryControllers',[]);
 
 var mobileView = 992;  //Need to fetch from firebase later dynamically
 
-primaryControllers.controller('QuantumSignUpCtr',['$scope','$location','$window','SignUpService',
-    function($scope, $location, $window, SignUpService){
+primaryControllers.controller('QuantumSignUpCtr',['$scope','$location','$window','$timeout','SignUpService',
+    function($scope, $location, $window, $timeout,SignUpService){
         $scope.user = {};
         $scope.user.name = '';
         $scope.user.phone = '';
         $scope.user.address = '';
         $scope.user.email = '';
-
+        $scope.$emit('DOMLoaded');
         if($location.search('user') == 'invalid'){
             $scope.messages.push({
                 type:'danger',
@@ -21,7 +21,10 @@ primaryControllers.controller('QuantumSignUpCtr',['$scope','$location','$window'
         }
 
         $scope.signUpPopup = function($event, strategy){
+            $scope.$emit('DOMLoading');
+            //$timeout.delay('5s');
             SignUpService.registerUser($scope.user,function(){
+                //$scope.$emit('DOMLoaded');
                 $location.path('/auth/'+strategy);
                 $window.location.href = $location.absUrl();
             });
@@ -29,15 +32,36 @@ primaryControllers.controller('QuantumSignUpCtr',['$scope','$location','$window'
     }
 ]);
 
-primaryControllers.controller('MessageCTRL',['$scope',
-    function($scope) {
+primaryControllers.controller('MessageCTRL',['$scope', '$mdToast', '$document',
+    function($scope, $mdToast, $document) {
         $scope.alerts = [{
-            type: 'success',
-            msg: 'Thanks for visiting! Feel free to create pull requests to improve the dashboard!'
+            type: 'SUCCESS',
+            msg: 'This is a material toast!'
         }, {
-            type: 'danger',
-            msg: 'Found a bug? Create an issue with as many details as you can.'
+            type: 'DANGER',
+            msg: 'This is a buggy toast!'
         }];
+
+        $scope.closeToast = function(){
+          $mdToast.hide();
+        };
+
+        $scope.showActionToast = function() {
+
+            var toast = $mdToast.simple()
+                .content($scope.alerts.msg[0])
+                .action('OK');
+
+            $mdToast.show(toast).then(function(response) {
+                if ( response == 'ok' ) {
+                   $mdToast.hide();
+                }
+            });
+        };
+
+        $document.on('ready',function(){
+            $scope.showActionToast();
+        });
 
         $scope.changeOfAlerts = function(){
           return $scope.alerts.length;
@@ -56,9 +80,10 @@ primaryControllers.controller('MessageCTRL',['$scope',
     }
 ]);
 
-primaryControllers.controller('DashboardCTRL',['$scope', '$state','$location','$cookieStore','$window',
+primaryControllers.controller('DashboardCTRL',['$scope','$state','$location','$cookieStore','$window',
     function($scope, $state, $location, $cookieStore, $window) {
-
+        $scope.selected = [];
+        $scope.$emit('DOMLoaded');
     }
 ])
 
@@ -68,12 +93,13 @@ primaryControllers.controller('ProfileCTRL',['$scope', '$state','$location','$co
     }
 ]);
 
-primaryControllers.controller('AccountsCTRL',['$scope', '$state','$location','$cookieStore','$window',
-    function($scope, $state, $location, $cookieStore, $window){
-
+primaryControllers.controller('AccountsCTRL',['$scope', '$state','$location','$cookieStore','$timeout','$window',
+    function($scope, $state, $location, $cookieStore, $timeout, $window){
+        $scope.$emit('DOMLoading');
         $state.go('mesh.accounts.dashboard',$state.params,{inherit:true});
 
         var window = angular.element($window);
+        //$timeout.delay('5s');
 
         $scope.user = $location.search('user_id');
 
@@ -122,12 +148,26 @@ primaryControllers.controller('AccountsCTRL',['$scope', '$state','$location','$c
 
 primaryControllers.controller('PrimaryAppController',['$state','$scope', '$routeParams', '$http',
     function($state, $scope, $routeParams, $http){
+        $scope.spinner = {show:true};
+        $scope.$on('DOMLoaded',function(){
+            $scope.spinner.show = false;
+        });
+        $scope.$on('DOMLoading', function(){
+            $scope.spinner.show = true;
+        });
         $state.go('shell.login',$state.params,{inherit:true});
     }
 ]);
 
 primaryControllers.controller('CenterMeshController',['$state','$scope', '$routeParams', '$http',
     function($state, $scope, $routeParams, $http){
+        $scope.spinner = {show:true};
+        $scope.$on('DOMLoaded',function(){
+            $scope.spinner.show = false;
+        });
+        $scope.$on('DOMLoading', function(){
+            $scope.spinner.show = true;
+        });
         $state.go('mesh.accounts',$state.params,{inherit:true});
     }
 ]);

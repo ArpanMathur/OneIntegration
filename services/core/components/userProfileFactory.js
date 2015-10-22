@@ -11,12 +11,12 @@ var userProfileFactory = {
     profileConfigurer: function(provider){
         var provider = provider;
         var configureProfile = function(request, accessToken, refreshToken, profile, done){
-            var newUser = users.push();
             accounts.on("value",function(snapshot){
                 var accMap = snapshot.val();
                 if(accMap.hasOwnProperty(profile.id)){
                     return done(null,profile);
                 }else{
+                    var newUser = users.push();
                     newUser.set({ UserID : profile.id, Profile:profile }, function(error){
                         if(error){
                             return done(error,profile);

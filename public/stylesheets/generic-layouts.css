@@ -1,10 +1,24 @@
+html[ng-app]{
+    overflow-y: auto !important;
+}
+
+body{
+    background-color: #ffffff !important;
+}
 
 input{
     padding:5px;
     margin:8px;
-    width:60%;
+    width:auto !important;
 }
 
+.shell-background{
+    background-image: url(../images/arch.jpg);
+}
+
+.md-icon-button{
+  margin:0 !important;
+}
 /* For Boot Strap */
 .nav,
 .pagination,
@@ -12,6 +26,7 @@ input{
 .panel-title a {
     cursor: pointer;
 }
+
 
 a:focus{
     outline:none !important;
@@ -30,13 +45,89 @@ a:focus{
 }
 
 .nav-bar-elevated{
-    -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.175);
-    box-shadow: 0 5px 5px rgba(0,0,0,0.175);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.175);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.175);
     position: fixed;
     z-index: 999;
     right:0;
     left:0;
     width: 100%;
+}
+
+.space-around{
+    width: 100%;
+}
+
+
+/**Adjust Material Cards in Bootstrap a Coercion of 1% */
+.col-lg-6{
+    padding: 0 !important;
+    width: 48% !important;
+    min-height: 330px !important;
+    max-height: 330px !important;
+}
+
+.md-title {
+    font-family: monospace !important;
+    font-size: 18px !important;
+}
+
+.md-button, .md-warn, .md-primary, .md-accent{
+   font-family: "RobotoDraft", "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 14px !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    text-decoration: inherit !important;
+    text-transform: none !important;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+.md-button:not([disabled]):hover {
+    background-color: rgba(193, 193, 193, 0.96) !important;
+    color: #ffffff !important;
+    transition: 0.5s !important;
+}
+
+.col-lg-12{
+    width: 99%!important;
+}
+
+.overlay {
+    position:           absolute;
+    z-index:            3;
+    top:                0;
+    left:               0;
+    width:              100%;
+    height:             99.9%;
+    background-color:   rgba(0,0,0,0.10);
+}
+
+md-data-table-toolbar{
+    height: 55px !important;
+    padding: 0 14px !important;
+}
+
+table[md-data-table] > tbody > tr > td:last-child{
+    width: 0 !important;
+    padding: 0 !important;
+}
+
+.icon {
+    width: 16px;
+}
+
+table[md-data-table] > tbody > tr > td{
+    width:40%;
+}
+
+.scroller {
+    white-space: pre-line;
+    overflow-y: hidden;
+    position: relative;
 }
 
 .nav-bar-normal{
@@ -111,13 +202,15 @@ a:focus{
 
 /* Angular Material Design Starts Here*/
 .mdContentParent{
-    min-height:650px;
-    background-color: #FFFFFF !important;
+    background-color: transparent !important;
+    width: 100%;
+    height:100%;
 }
+
 md-content{
-    width:30%;
+    background-color: transparent;
 }
-md-card-content{ width:auto; }
+.md-card-content{ width:auto; }
 md-input-container > input { width:85%; }
 md-input-container:not(.md-input-invalid) > md-icon.email {
     color: green;
